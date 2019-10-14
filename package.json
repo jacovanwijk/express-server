@@ -1,0 +1,18 @@
+{
+    "name": "express-server",
+    "version": "1.0.0",
+    "description": "Supporting server for front-end applications",
+    "keywords": [
+        "express",
+        "mongodb",
+        "mongoose"
+    ],
+    "author": "Jaco van Wijk",
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "start": "node server.js"
+    }
+}
