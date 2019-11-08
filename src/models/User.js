@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
-const authorSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   _id: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -16,6 +17,14 @@ const authorSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    lowercase: true,
+    unique: true,
+    dropDups: true,
+    validate: (value) => {
+      if (!validator.isEmail(value)) {
+        throw new Error({error: 'Invalid Email address'});
+      }
+    },
   },
   password: {
     type: String,
@@ -28,4 +37,6 @@ const authorSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Author', authorSchema);
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
